@@ -55,7 +55,10 @@ public:
         // TODO: Return item if found or throw ItemNotFoundException
         auto foundId = itemById.find(id);
         try {
-            if (foundId == itemById.end()) {
+            if (foundId != itemById.end()) {
+                return foundId->second;
+            }
+            else {
                 throw ItemNotFoundException("Item not found, cannot be removed");
             }
         }
